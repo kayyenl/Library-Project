@@ -24,8 +24,8 @@ const Book = (props) => {
                     })
                 }
                 {
-                    props.info.rating % 1 === 0.5 ? 
-                    <FontAwesomeIcon icon="star-half-alt" /> : null
+                    props.info.rating % 1 !== 0.5 ||
+                    <FontAwesomeIcon icon="star-half-alt" />
                 }
             </div>
             <div className="book__price">
