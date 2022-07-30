@@ -12,17 +12,17 @@ const Highlights = () => {
                     </h2>
                     <div className="highlight__wrapper">
                         <Highlight 
-                        icon={<FontAwesomeIcon icon='bolt'
+                        icon={<FontAwesomeIcon icon='bolt' />}
                         title='Easy and Quick'
-                        para='Get access to the book you purchased online instantly!' />}/>
+                        para='Get access to the book you purchased online instantly!' />
                         <Highlight 
-                        icon={<FontAwesomeIcon icon='book-open'
+                        icon={<FontAwesomeIcon icon='book-open' />}
                         title='10,000+ Books'
-                        para='Library provides books in all your favourite categories!' />}/>
+                        para='Library provides books in all your favourite categories!' />
                         <Highlight 
-                        icon={<FontAwesomeIcon icon='tags'
+                        icon={<FontAwesomeIcon icon='tags' />}
                         title='Very Affordable'
-                        para='Get that book you wanted for as little as $10.' />}/>
+                        para='Get that book you wanted for as little as $10.' />
                     </div>
                 </div>
             </div>

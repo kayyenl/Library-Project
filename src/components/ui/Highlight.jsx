@@ -7,7 +7,7 @@ const Highlight = (props) => {
         {props.icon}
       </div>
       <h3 className="highlight__subtitle">{props.title}</h3>
-      <p>Get access to the book you purchased online instantly!</p>
+      <p className="highlight__para">{props.para}</p>
     </div>
   );
 };
