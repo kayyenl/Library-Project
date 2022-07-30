@@ -632,6 +632,7 @@ select {
 }
 
 .book__price {
+  font-weight: bold;
   font-size: 16px;
   margin: 8px 0 24px 0;
 }
