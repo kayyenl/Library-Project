@@ -12,10 +12,14 @@ const Featured = () => {
                         Featured <span className="purple">Books</span>
                     </h2>
                     <div className="books">
-                        <Book />
-                        <Book />
-                        <Book />
-                        <Book />
+                        {books
+                        .filter(elem => (elem.rating === 5))
+                        .slice(0,4)
+                        .map(elem => 
+                        <Book 
+                        key={elem.id}
+                        info={elem}
+                        />)}
                     </div>
                 </div>
             </div>
