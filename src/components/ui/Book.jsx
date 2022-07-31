@@ -30,7 +30,7 @@ const Book = (props) => {
             </div>
             <div className="book__price">
                 {props.info.salePrice === null ? 
-                    <span className="book__price--normal">${props.info.originalPrice.toFixed(2)}</span> :
+                    <span>${props.info.originalPrice.toFixed(2)}</span> :
                     <div><span className="book__price--normal">${props.info.originalPrice}</span>${props.info.salePrice.toFixed(2)}</div>}
             </div>
         </div>
