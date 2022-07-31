@@ -13,6 +13,12 @@ const Footer = () => {
                     </a>
                     <div className="footer__list">
                         <a href="/" className='footer__link'>Home</a>
+                        <span className="footer__link no-cursor">About</span>
+                        <a href="/books" className='footer__link'>Books</a>
+                        <a href="/cart" className='footer__link'>Cart</a>
+                    </div>
+                    <div className="footer__copyright">
+                        Copyright &copy; Library 2022
                     </div>
                 </div>
             </div>
