@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import Book from '../components/ui/Book';
 import Price from '../components/ui/Price';
 import Rating from '../components/ui/Rating';
 
 const BookInfo = ({ books }) => {
+    const { id } = useParams()
+    const book = books[id - 1]
     return (
         <div id="books__body">
             <main id="books__main">
@@ -20,18 +23,18 @@ const BookInfo = ({ books }) => {
                         </div>
                         <div className="book__selected">
                             <figure className="book__selected--figure">
-                                <img src="https://covers.openlibrary.org/b/id/8091016-L.jpg" alt="" className="book__selected--img" />
+                                <img src={book.url} alt="" className="book__selected--img" />
                             </figure>
                             <div className="book__selected--description">
-                                <h2 className="book__selected--title">Cracking the Coding Interview</h2>
-                                <Rating rating={4.5} />
+                                <h2 className="book__selected--title">{book.title}</h2>
+                                <Rating rating={book.rating} />
                                 <div className="book__selected--price">
-                                    <Price originalPrice={50} salePrice={12} /> 
+                                    <Price originalPrice={book.originalPrice} salePrice={book.salePrice} /> 
                                 </div>
                                 <div className="book__summary">
-                                    <div className="book__summary--title">
+                                    <h3 className="book__summary--title">
                                         Summary
-                                    </div>
+                                    </h3>
                                     <p className="book__summary--para">
                                         Lorem ipsum dolor sit amet consectetur 
                                         adipisicing elit. Cum itaque esse quibusdam 
@@ -57,6 +60,12 @@ const BookInfo = ({ books }) => {
                             <h2 className="book__selected--title--top">
                                 Recommended Books
                             </h2>
+                        </div>
+                        <div className="books">
+                            {
+                                books.filter(elem => elem.rating === 5 && elem.id !== +id).slice(0,4)
+                                .map(elem => <Book key={elem.id} info={elem} />)
+                            }
                         </div>
                     </div>
                 </div>
