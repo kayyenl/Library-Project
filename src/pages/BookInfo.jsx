@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Price from '../components/ui/Price';
+import Rating from '../components/ui/Rating';
 
 const BookInfo = ({ books }) => {
     return (
@@ -22,7 +24,28 @@ const BookInfo = ({ books }) => {
                             </figure>
                             <div className="book__selected--description">
                                 <h2 className="book__selected--title">Cracking the Coding Interview</h2>
-                                <FontAwesomeIcon icon="star" />
+                                <Rating rating={4.5} />
+                                <div className="book__selected--price">
+                                    <Price originalPrice={50} salePrice={12} /> 
+                                </div>
+                                <div className="book__summary">
+                                    <div className="book__summary--title">
+                                        Summary
+                                    </div>
+                                    <p className="book__summary--para">
+                                        Lorem ipsum dolor sit amet consectetur 
+                                        adipisicing elit. Cum itaque esse quibusdam 
+                                        facere sed neque quas assumenda ducimus! 
+                                        Laborum, maiores!
+                                    </p>
+                                    <p className="book__summary--para">
+                                        Lorem ipsum dolor sit amet consectetur 
+                                        adipisicing elit. Cum itaque esse quibusdam 
+                                        facere sed neque quas assumenda ducimus! 
+                                        Laborum, maiores!
+                                    </p>
+                                </div>
+                                <button className="btn">Add to Cart</button>
                             </div>
                         </div>
                     </div>
