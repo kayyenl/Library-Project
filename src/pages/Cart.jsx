@@ -1,7 +1,7 @@
 import React from 'react';
 import Price from '../components/ui/Price';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, changeQuantity }) => {
     return (
         <div id="books__body">
             <main id="books__main">
@@ -19,7 +19,8 @@ const Cart = ({ cart }) => {
                             <div className="cart__body">
                                 {
                                     cart.map(elem => {
-                                        return (
+                                        return +elem.quantity ==+ 0 ? null :
+                                        (
                                             <div className="cart__item">
                                                 <div className="cart__book">
                                                     <img src={elem.url} 
@@ -36,7 +37,9 @@ const Cart = ({ cart }) => {
                                                     </div>
                                                 </div>
                                                 <div className="cart__quantity">
-                                                    <input type="number" min={0} max={99} className='cart__input'/>
+                                                    <input type="number" min={0} max={99} value={elem.quantity}
+                                                    className='cart__input'
+                                                    onChange={(event) => changeQuantity(elem, event.target.value)}/>
                                                 </div>
                                                 <div className="cart__total">
                                                     <Price originalPrice={elem.originalPrice}
