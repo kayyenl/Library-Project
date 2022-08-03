@@ -2,6 +2,12 @@ import React from 'react';
 import Price from '../components/ui/Price';
 
 const Cart = ({ cart, changeQuantity }) => {
+    const total = cart.reduce((starting, cartItem) => {
+        return (starting + (cartItem.salePrice || cartItem.originalPrice)*cartItem.quantity)
+    }, 0).toFixed(2)
+    function totalFraction(percent) {
+        return (total * percent).toFixed(2)
+    }
     return (
         <div id="books__body">
             <main id="books__main">
@@ -53,15 +59,15 @@ const Cart = ({ cart, changeQuantity }) => {
                         <div className="total">
                             <div className="total__item total__sub-total">
                                 <span>Subtotal</span>
-                                <span>$9.00</span>
+                                <span>${totalFraction(0.9)}</span>
                             </div>
                             <div className="total__item total__tax">
                                 <span>Tax</span>
-                                <span>$1.00</span>
+                                <span>${totalFraction(0.1)}</span>
                             </div>
                             <div className="total__item total__price">
                                 <span>Total</span>
-                                <span>$10.00</span>
+                                <span>${total}</span>
                             </div>
                             <button className="btn btn__checkout no-cursor" 
                             onClick={() => alert("This is still a work in progress!")}>
