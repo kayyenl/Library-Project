@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [cartSize, setCartSize] = useState(0);
 
   function addToCart(book) {
     setCart([...cart, {...book, quantity: +1}])
@@ -23,13 +24,16 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(cart)
+    const size = cart.reduce((starting, cartItem) => {
+      return starting + cartItem.quantity
+    }, 0)
+    setCartSize(size)
   }, [cart])
 
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Nav size={cartSize}/>
         <Route path='/' exact component={Home} />
         <Route path='/books' exact render={() => <Books books={books} />} />
         <Route path='/books/:id' render={() => <BookInfo books={books} addToCart={addToCart} cart={cart}/>} />
