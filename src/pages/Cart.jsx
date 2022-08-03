@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Price from '../components/ui/Price';
 
 const Cart = ({ cart, changeQuantity }) => {
-    const total = cart.reduce((starting, cartItem) => {
-        return (starting + (cartItem.salePrice || cartItem.originalPrice)*cartItem.quantity)
-    }, 0).toFixed(2)
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        const newPrice = cart.reduce((starting, cartItem) => {
+            return (starting + (cartItem.salePrice || cartItem.originalPrice)*cartItem.quantity)
+        }, 0).toFixed(2)
+
+        setTotal(newPrice)
+    }, [cart])
+
     function totalFraction(percent) {
         return (total * percent).toFixed(2)
     }
+    
     return (
         <div id="books__body">
             <main id="books__main">
