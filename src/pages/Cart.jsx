@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Price from '../components/ui/Price';
+import EmptyCart from '../assets/empty_cart.svg'
+import { Link } from 'react-router-dom';
 
 const Cart = ({ cart, changeQuantity }) => {
     const [total, setTotal] = useState(0);
@@ -64,25 +66,35 @@ const Cart = ({ cart, changeQuantity }) => {
                                     })
                                 }
                             </div>
+                            { cart.length !== 0 || 
+                                <div className="cart__empty">
+                                    <img src={EmptyCart} alt="" className="cart__empty--img" />
+                                    <h2>You don't have any books in your cart!</h2>
+                                    <Link to='/books'>
+                                        <button className="btn">Browse Books</button>
+                                    </Link>
+                                </div>
+                            }
                         </div>
-                        <div className="total">
-                            <div className="total__item total__sub-total">
-                                <span>Subtotal</span>
-                                <span>${totalFraction(0.9)}</span>
-                            </div>
-                            <div className="total__item total__tax">
-                                <span>Tax</span>
-                                <span>${totalFraction(0.1)}</span>
-                            </div>
-                            <div className="total__item total__price">
-                                <span>Total</span>
-                                <span>${total}</span>
-                            </div>
-                            <button className="btn btn__checkout no-cursor" 
-                            onClick={() => alert("This is still a work in progress!")}>
-                                Proceed to Checkout!
-                            </button>
-                        </div>
+                        { cart.length === 0 || 
+                            <div className="total">
+                                <div className="total__item total__sub-total">
+                                    <span>Subtotal</span>
+                                    <span>${totalFraction(0.9)}</span>
+                                </div>
+                                <div className="total__item total__tax">
+                                    <span>Tax</span>
+                                    <span>${totalFraction(0.1)}</span>
+                                </div>
+                                <div className="total__item total__price">
+                                    <span>Total</span>
+                                    <span>${total}</span>
+                                </div>
+                                <button className="btn btn__checkout no-cursor" 
+                                    onClick={() => alert("This is still a work in progress!")}>
+                                        Proceed to Checkout!
+                                </button>
+                            </div> }
                     </div>
                 </div>
             </main>
