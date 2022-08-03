@@ -17,10 +17,9 @@ function App() {
   }
 
   function changeQuantity(book, value) {
-    setCart(cart.map(elem => 
-      +elem.id === +book.id ? 
+    setCart(cart.map(elem => +elem.id === +book.id ? 
         {...book, quantity: +value} : elem
-    ))
+    ).filter(elem => elem.quantity !== 0))
   }
 
   useEffect(() => {

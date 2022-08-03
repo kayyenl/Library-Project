@@ -47,7 +47,8 @@ const Cart = ({ cart, changeQuantity }) => {
                                                         <Price originalPrice={elem.originalPrice}
                                                             salePrice={elem.salePrice} />
                                                         </span>
-                                                        <button className="cart__book--remove">Remove</button>
+                                                        <button className="cart__book--remove" onClick={() => changeQuantity(elem, 0)}>
+                                                            Remove</button>
                                                     </div>
                                                 </div>
                                                 <div className="cart__quantity">
