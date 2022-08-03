@@ -1,4 +1,4 @@
-import React , {useState, useEffect} from "react";
+import React , {useState, useEffect, useRef} from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import Price from "./Price";
@@ -7,15 +7,21 @@ import Price from "./Price";
 const Book = (props) => {
     const [img, setImg] = useState()
 
+    const mountedRef = useRef(true)
+
     useEffect(() => {
         const image = new Image()
         image.onload = () => {
             setTimeout(() => {
-                setImg(image)
-            }, 1000
-            )
+                if (mountedRef) {
+                    setImg(image)
+                }
+            }, 800)
         }
         image.src = props.info.url
+        return () => {
+            mountedRef.current = false
+        }
     });
 
     return (
