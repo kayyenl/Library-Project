@@ -8,6 +8,7 @@ import Rating from '../components/ui/Rating';
 const BookInfo = ({ addToCart, books, cart }) => {
     const { id } = useParams()
     const book = books[id - 1]
+    const total = cart
 
     function addBookToCart(book) {
         addToCart(book)
