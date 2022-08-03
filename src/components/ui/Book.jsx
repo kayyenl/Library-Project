@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import Price from "./Price";
@@ -7,13 +7,24 @@ import Price from "./Price";
 const Book = (props) => {
     const [img, setImg] = useState()
 
+    useEffect(() => {
+        const image = new Image()
+        image.onload = () => {
+            setTimeout(() => {
+                setImg(image)
+            }, 1000
+            )
+        }
+        image.src = props.info.url
+    });
+
     return (
         <div className="book">
             {
                 img ? <>
                     <Link to={`/books/${props.info.id}`}>
                         <figure className="book__img--wrapper">
-                            <img src={props.info.url} alt="" className="book__img"/>
+                            <img src={img.src} alt="" className="book__img"/>
                         </figure>
                     </Link>
                     <div className="book__title">
