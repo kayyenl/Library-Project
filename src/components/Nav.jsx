@@ -13,9 +13,9 @@ const Nav = ( {size} ) => {
     return (
         <nav>
             <div className="nav__container">
-                <a href="/">
+                <Link to="/" className="nav__link">
                     <img src={LibraryLogo} alt="" className="logo" />
-                </a>
+                </Link>
                 <ul className="nav__links">
                     <li className="nav__list">
                         <Link to="/" className="nav__link">
@@ -34,7 +34,10 @@ const Nav = ( {size} ) => {
                         <Link to="/cart" className='nav__link'>
                             <FontAwesomeIcon icon="shopping-cart" />
                         </Link>
-                        <span className="cart__length">{size}</span>
+                        {
+                            size === 0 || 
+                            <span className="cart__length">{ size === 0 || size }</span>
+                        }
                     </li>
                 </ul>
                 <div className="menu__backdrop">
